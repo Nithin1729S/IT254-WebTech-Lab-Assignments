@@ -6,7 +6,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    /* background-color: black; */
   }
   .container {
     width: 90%;
@@ -18,7 +18,7 @@ body {
     padding: 2px;
   }
   .text {
-    color: white;
+    color: black;
   }
   .progress {
     height: 60%;

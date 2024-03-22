@@ -1,16 +1,21 @@
+let checkedCount = 0;
+const checkboxes = document.querySelectorAll('.task-checkbox');
+const progress = document.querySelector('.progress');
+const text = document.querySelector('.text');
 
-let cnt = 0;
-let per = 0;
-red = setInterval(() => {
-  let bar = document.querySelector(".progress");
-  let percentage = setInterval(() => {
-    per += 1;
-    if (per >= cnt) clearInterval(percentage);
-    document.querySelector(".text").innerHTML = `<p>${per}%</p>`;
-  }, 100);
-  cnt += 10;
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            checkedCount++;
+        } else {
+            checkedCount--;
+        }
+        updateProgress();
+    });
+});
 
-  if (cnt == 100) clearInterval(red);
-  bar.style.width = cnt + "%";
-  console.log(cnt);
-}, 1000);
+function updateProgress() {
+    const percent = (checkedCount / checkboxes.length) * 100;
+    progress.style.width = percent + '%';
+    text.innerHTML = `<p>${Math.round(percent)}%</p>`;
+}
